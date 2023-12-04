@@ -1,0 +1,56 @@
+name: pointnet
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - absl-py=1.1.0
+  - astunparse=1.6.3
+  - cachetools=5.2.0
+  - certifi=2022.6.15
+  - charset-normalizer=2.1.0
+  - flatbuffers=1.12
+  - gast=0.4.0
+  - google-auth=2.9.0
+  - google-auth-oauthlib=0.4.6
+  - google-pasta=0.2.0
+  - grpcio=1.47.0
+  - h5py=3.7.0
+  - idna=3.3
+  - importlib-metadata=4.12.0
+  - keras=2.9.0
+  - keras-preprocessing=1.1.2
+  - libclang=14.0.1
+  - markdown=3.3.7
+  - multipledispatch=0.6.0
+  - numpy=1.23.0
+  - oauthlib=3.2.0
+  - opt-einsum=3.3.0
+  - packaging=21.3
+  - pillow=9.1.1
+  - protobuf=3.19.4
+  - pyasn1=0.4.8
+  - pyasn1-modules=0.2.8
+  - pyparsing=3.0.9
+  - pyrr=0.10.3
+  - requests=2.28.1
+  - requests-oauthlib=1.3.1
+  - rsa=4.8
+  - six=1.16.0
+  - tensorboard=2.9.1
+  - tensorboard-data-server=0.6.1
+  - tensorboard-plugin-wit=1.8.1
+  - tensorflow=2.9.1
+  - tensorflow-estimator=2.9.0
+  - tensorflow-io-gcs-filesystem=0.26.0
+  - termcolor=1.1.0
+  - trimesh=3.12.6
+  - typing-extensions=4.5.0  # 代替のバージョンを指定
+  - urllib3=1.26.9
+  - werkzeug=2.1.2
+  - wrapt=1.14.1
+  - zipp=3.8.0
+
+
+今の環境
+  tensorflow                2.4.1           mkl_py39h4683426_0 
+  numpy 消した
