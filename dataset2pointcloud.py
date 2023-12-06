@@ -55,6 +55,8 @@ for point_file in tqdm(points_files):
     continue
 
 print("numpyかlistか確認します：",type(point_clouds))
+#numpy.ndarrayだったのでtolist
+point_clouds = point_clouds.tolist()
 
 
     
