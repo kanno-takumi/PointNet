@@ -50,7 +50,7 @@ points_files = glob(os.path.join(points_dir,"*.pts"))
 #         continue
 point_clouds = []
 for point_file in tqdm(points_files):
-  point_clouds = np.loadtxt(point_file)
+  point_clouds = np.loadtxt(point_file).tolist()
   if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
     continue
 
