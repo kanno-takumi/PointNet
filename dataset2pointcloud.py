@@ -33,12 +33,13 @@ meta_path = 'PartAnnotation/metadata.json'
 with open( os.path.join(dataset_path, meta_path) ) as json_file:
   metadata = json.load(json_file)
 
-target = 'Chair'
-obj_dir = metadata[target]['directory']
-print("obj_dir",obj_dir)
-points_dir = os.path.join(dataset_path, 'PartAnnotation', obj_dir, 'points')
-points_files = glob(os.path.join(points_dir,"*.pts"))
-print("points_files",points_files)
+
+for target in metadata.keys():
+    obj_dir = metadata[target]['directory']
+    #print("obj_dir",obj_dir)
+    points_dir = os.path.join(dataset_path, 'PartAnnotation', obj_dir, 'points')
+    points_files = glob(os.path.join(points_dir,"*.pts"))
+    print("points_files",points_files)
 
 #まずは1つのファイルから開く。
 # coords = []
@@ -49,24 +50,25 @@ print("points_files",points_files)
         
 #     if pt_list.shape[0] < NUM_SAMPLE_POINTS:
 #         continue
-point_clouds = []
-for point_file in tqdm(points_files):
-    point_clouds = np.loadtxt(point_file)
+    point_clouds = []
+    for point_file in tqdm(points_files):
+        point_clouds = np.loadtxt(point_file)
     
-    if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
-        continue
-  # print("numpyかlistか確認します：",type(point_clouds))
+        if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
+            continue
+ 
+ 
+ # print("numpyかlistか確認します：",type(point_clouds))
 #numpy.ndarrayだったのでtolist
     point_clouds = point_clouds.tolist()
     data_to_save = {'coords':point_clouds}
-    #print(data_to_save)
+#print(data_to_save)
 
-    file_name = os.path.join(dataset_path,'pointcloud',f"{obj_dir}.json")
-    # file_name = 'sample.json'
-    print(file_name)
+    file_name = os.path.join(dataset_path,'pointcloud',f"{target}.json")
+# file_name = 'sample.json'
+#print(file_name)
     with open(file_name,'w') as file:
-        json.dump(data_to_save,file)
-        
+        json.dump(data_to_save,file)       
     
 
 
