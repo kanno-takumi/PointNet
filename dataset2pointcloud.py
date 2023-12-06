@@ -34,7 +34,7 @@ with open( os.path.join(dataset_path, meta_path) ) as json_file:
   metadata = json.load(json_file)
 
 
-for target in metadata.keys():
+for target in tqdm(metadata.keys()):
     obj_dir = metadata[target]['directory']
     #print("obj_dir",obj_dir)
     points_dir = os.path.join(dataset_path, 'PartAnnotation', obj_dir, 'points')
@@ -51,7 +51,7 @@ for target in metadata.keys():
 #     if pt_list.shape[0] < NUM_SAMPLE_POINTS:
 #         continue
     point_clouds = []
-    for point_file in tqdm(points_files):
+    for point_file in (points_files):
         point_clouds = np.loadtxt(point_file)
     
         if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
