@@ -35,6 +35,7 @@ with open( os.path.join(dataset_path, meta_path) ) as json_file:
 
 target = 'Chair'
 obj_dir = metadata[target]['directory']
+print("obj_dir",obj_dir)
 points_dir = os.path.join(dataset_path, 'PartAnnotation', obj_dir, 'points')
 points_files = glob(os.path.join(points_dir,"*.pts"))
 
@@ -47,12 +48,11 @@ points_files = glob(os.path.join(points_dir,"*.pts"))
         
 #     if pt_list.shape[0] < NUM_SAMPLE_POINTS:
 #         continue
-point_clouds_np = []
+point_clouds = []
 for point_file in tqdm(points_files):
-  point_cloud_np = np.loadtxt(point_file)
-  if point_cloud_np.shape[0] < NUM_SAMPLE_POINTS:
+  point_clouds = np.loadtxt(point_file)
+  if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
     continue
-point_clouds = point_clouds_np.tolist()
 
 
     
