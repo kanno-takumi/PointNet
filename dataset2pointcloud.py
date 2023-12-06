@@ -41,34 +41,28 @@ for target in tqdm(metadata.keys()):
     points_files = glob(os.path.join(points_dir,"*.pts"))
     print("points_files",points_files)
 
-#まずは1つのファイルから開く。
-# coords = []
-# for point_file in tqdm(points_files): #複数のファイルから、
-#     # point_cloud = np.loadtxt(point_file)
-#     with open(point_file,'r') as f:
-#         pt_list = f.read().split('\n')
-        
-#     if pt_list.shape[0] < NUM_SAMPLE_POINTS:
-#         continue
-    point_clouds = []
-    for point_file in (points_files):
-        point_clouds = np.loadtxt(point_file)
+    #Chairsディレクトリなどがもしなければ作成する。
+    object_directory = os.path.join(dataset_path,'pointcloud',target)
+    if not os.path.exists(object_directory):
+        os.makedirs(object_directory)
     
+    for point_file in tqdm((points_files)):
+        point_clouds = np.loadtxt(point_file)
         if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
             continue
  
  
  # print("numpyかlistか確認します：",type(point_clouds))
 #numpy.ndarrayだったのでtolist
-    point_clouds = point_clouds.tolist()
-    data_to_save = {'coords':point_clouds}
+        point_clouds = point_clouds.tolist()
+        data_to_save = {'coords':point_clouds}
 #print(data_to_save)
-
-    file_name = os.path.join(dataset_path,'pointcloud',f"{target}.json")
+    
+        file_name = os.path.join(object_directory,f"{obj_dir}.json")
 # file_name = 'sample.json'
 #print(file_name)
-    with open(file_name,'w') as file:
-        json.dump(data_to_save,file)       
+        with open(file_name,'w') as file:
+            json.dump(data_to_save,file)       
     
 
 
