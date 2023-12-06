@@ -59,10 +59,10 @@ for target in tqdm(metadata.keys()):#違うobjectに対して繰り返し
         data_to_save = {'coords':point_clouds}
 #print(data_to_save)
         file_name=os.path.basename(point_file) #例えば00001
-#json_path = os.path.join(object_directory,f"{point_file}.json")
+        json_path = os.path.join(object_directory,f"{file_name}.json")
 # file_name = 'sample.json'
 #print(file_name)
-        with open(point_file,'w') as file:
+        with open(json_path,'w') as file:
             json.dump(data_to_save,file)       
     
 
