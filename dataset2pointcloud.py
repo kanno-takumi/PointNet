@@ -58,7 +58,7 @@ for target in tqdm(metadata.keys()):#違うobjectに対して繰り返し
         point_clouds = point_clouds.tolist()
         data_to_save = {'coords':point_clouds}
 #print(data_to_save)
-        file_name=os.path.basename(point_file) #例えば00001
+        file_name=os.path.spilitext(os.path.basename(point_file))[0] #例えば00001
         json_path = os.path.join(object_directory,f"{file_name}.json")
 # file_name = 'sample.json'
 #print(file_name)
