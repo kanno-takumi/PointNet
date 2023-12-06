@@ -34,7 +34,7 @@ class Data_Seq(tf.keras.utils.Sequence):
             files, _ = create_contents_list(d)
             file_num = len(files)
             data_path += files
-            data_label += [l] * file_num
+            data_label += [l] * file_num #labelの決定
         return data_path, data_label
 
     def getitem(self):
