@@ -27,10 +27,10 @@ tf.random.set_seed(12)
 
 NUM_SAMPLE_POINTS = 1024  # サンプリング数
 dataset_path = "~/python/dataset_pointnet"
-dirname = os.path.dirname(dataset_path)
-print("dirname",dirname)
+# dirname = os.path.dirname(dataset_path) dirname = ~/pythonだった
+# print("dirname",dirname)
 meta_path = 'PartAnnotation/metadata.json'
-with open( os.path.join(dirname, meta_path) ) as json_file:
+with open( os.path.join(dataset_path, meta_path) ) as json_file:
   metadata = json.load(json_file)
 
 target = 'Chair'
