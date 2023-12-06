@@ -63,5 +63,6 @@ point_clouds = point_clouds.tolist()
 data_to_save = {'coords':point_clouds}
 
 file_name = os.path.join(dataset_path,'sample.json')
+print(file_name)
 with open(file_name,'w') as file:
     json.dump(data_to_save,file)
