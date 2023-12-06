@@ -51,6 +51,9 @@ points_files = glob(os.path.join(points_dir,"*.pts"))
 point_clouds = []
 for point_file in tqdm(points_files):
     point_clouds = np.loadtxt(point_file)
+    
+    if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
+        continue
   # print("numpyかlistか確認します：",type(point_clouds))
 #numpy.ndarrayだったのでtolist
     point_clouds = point_clouds.tolist()
@@ -63,8 +66,7 @@ for point_file in tqdm(points_files):
     with open(file_name,'w') as file:
         json.dump(data_to_save,file)
         
-    if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
-        continue
+    
 
 
 
