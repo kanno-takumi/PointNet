@@ -50,9 +50,11 @@ points_files = glob(os.path.join(points_dir,"*.pts"))
 #         continue
 point_clouds = []
 for point_file in tqdm(points_files):
-  point_clouds = np.loadtxt(point_file).tolist()
+  point_clouds = np.loadtxt(point_file)
   if point_clouds.shape[0] < NUM_SAMPLE_POINTS:
     continue
+
+print("numpyかlistか確認します：",type(point_clouds))
 
 
     
