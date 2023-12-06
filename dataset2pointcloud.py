@@ -58,7 +58,7 @@ for point_file in tqdm(points_files):
 #numpy.ndarrayだったのでtolist
     point_clouds = point_clouds.tolist()
     data_to_save = {'coords':point_clouds}
-    print(data_to_save)
+    #print(data_to_save)
 
     file_name = os.path.join(dataset_path,'pointcloud',f"{obj_dir}.json")
     # file_name = 'sample.json'
