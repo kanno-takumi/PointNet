@@ -38,6 +38,7 @@ obj_dir = metadata[target]['directory']
 print("obj_dir",obj_dir)
 points_dir = os.path.join(dataset_path, 'PartAnnotation', obj_dir, 'points')
 points_files = glob(os.path.join(points_dir,"*.pts"))
+print("points_files",points_files)
 
 #まずは1つのファイルから開く。
 # coords = []
