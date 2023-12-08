@@ -73,7 +73,7 @@ class Data_Seq(tf.keras.utils.Sequence):
         return x, y, i 
 
 if __name__ == "__main__":
-    data_seq = Data_Seq("./dataset/trimesh_primitives/train", 128, 32, 10)
+    data_seq = Data_Seq("../dataset_pointnet/polygon", 128, 32, 10)
     x, y = data_seq.getitem()
     print("x.shape: ", x.shape)
     print("x[0]: ", x[0])
