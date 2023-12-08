@@ -20,7 +20,7 @@ if __name__ == "__main__":
     val_seq = Data_Seq("../dataset_pointnet/polygon", num_point, batch_size, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
-    pointnet_cla = Pointnet_Cla(num_point, 4)
+    pointnet_cla = Pointnet_Cla(num_point, 16)
     pointnet_cla.summary()
 
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, verbose=1, mode='auto')
