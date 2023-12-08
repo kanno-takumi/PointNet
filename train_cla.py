@@ -9,7 +9,7 @@ import tensorflow as tf
 if __name__ == "__main__":
 
 #32個取り出して学習させる。全データを20回学習させる。1エポック(丸々1データセット学習)するにはバッチ*10回する必要がある。
-    num_point = 128
+    num_point = 3000 #点群の数　ものによって違う 2900~3000くらいで試す。
     batch_size = 32
     epochs = 20
     ite_size = 10
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     val_seq = Data_Seq("../dataset_pointnet/polygon", num_point, batch_size, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
-    pointnet_cla = Pointnet_Cla(num_point, 4)
+    pointnet_cla = Pointnet_Cla(num_point, 16) #引数16はいくつ対象があるか。
     pointnet_cla.summary()
 
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, verbose=1, mode='auto')
