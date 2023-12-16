@@ -1,8 +1,8 @@
 name: pointnet
 channels:
-  - defaults
   - conda-forge
 dependencies:
+  - python=3.9
   - absl-py=1.1.0
   - astunparse=1.6.3
   - cachetools=5.2.0
