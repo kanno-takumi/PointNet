@@ -4,6 +4,7 @@ import os
 import numpy as np
 import trimesh
 import tensorflow as tf
+import json
 
 parent_dir = os.path.join(os.path.dirname(__file__), '..')
 sys.path.append(parent_dir)
@@ -65,10 +66,14 @@ class Data_Seq(tf.keras.utils.Sequence):
         rind = np.random.randint(len(self.data_path))
         data_path = self.data_path[rind]
         y = self.data_label[rind]
-        x = trimesh.load(data_path)
+        #x = trimesh.load(data_path)
         ## augment data here as appropriate
-        x = x.vertices
-        samples_id = np.random.choice(np.arange(x.shape[0]), self.num_points, replace=False)
+        with open(data_path,'r') as file:
+            json_data = json.load(file)
+            points = json_data['coords'] #np.arrayはいらないかな？
+            
+        # x = x.vertices
+        samples_id = np.random.choice(np.arange(points.shape[0]), self.num_points, replace=False)
         x = x[samples_id]
         return x, y, i 
 
