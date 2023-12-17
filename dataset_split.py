@@ -31,6 +31,8 @@ for object_name in tqdm(object_names): #Tableなど
     #ファイルで保存しておくのは重くなりすぎる。directoryで保存しておいて順にコピーしていく。
     
     train_data, test_data = train_test_split(ids,test_size=0.1,random_state=42)
+    print("train_data",train_data)
+    print("test_data",test_data)
     
     #train_data,test_dataには分割したファイル名が保存されている。
     #train,testに分割したデータをそれぞれコピーする
