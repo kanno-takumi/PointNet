@@ -74,7 +74,7 @@ class Data_Seq(tf.keras.utils.Sequence):
             
         # x = x.vertices
         samples_id = np.random.choice(np.arange(points.shape[0]), self.num_points, replace=False)
-        x = x[samples_id]
+        x = points[samples_id]
         return x, y, i 
 
 if __name__ == "__main__":
