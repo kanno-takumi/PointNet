@@ -70,7 +70,7 @@ class Data_Seq(tf.keras.utils.Sequence):
         ## augment data here as appropriate
         with open(data_path,'r') as file:
             json_data = json.load(file)
-            points = json_data['coords'] #np.arrayはいらないかな？
+            points = np.array(json_data['coords']) #np.arrayに変換した
             
         # x = x.vertices
         samples_id = np.random.choice(np.arange(points.shape[0]), self.num_points, replace=False)
