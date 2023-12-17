@@ -49,7 +49,7 @@ for object_name in tqdm(object_names): #Tableなど
         save_test_dir=os.path.join(test_dir,object_name,a_test_data)
         #copy前のdirectory
         initial_dir = os.path.join(object_path,a_test_data)
-        shutil.copy(initial_dir,save_train_dir)
+        shutil.copy(initial_dir,save_test_dir)
         
 
 
