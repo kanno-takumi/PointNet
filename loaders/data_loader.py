@@ -2,7 +2,7 @@ from dataclasses import replace
 import sys 
 import os
 import numpy as np
-import trimesh
+# import trimesh
 import tensorflow as tf
 import json
 
