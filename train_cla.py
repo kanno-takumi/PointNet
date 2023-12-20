@@ -17,7 +17,7 @@ if __name__ == "__main__":
     train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, ite_size)
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 10)
+    val_seq = Data_Seq("../dataset_pointnet_normalized/tmp", num_point, batch_size, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
     pointnet_cla = Pointnet_Cla(num_point, 16) #引数16はいくつ対象があるか。
@@ -30,13 +30,13 @@ if __name__ == "__main__":
     pointnet_cla.fit(
         x=train_seq,
         batch_size=batch_size,
-        # validation_data=val_seq,　＃訓練と評価を別で行う
+        validation_data=val_seq, #訓練と評価を別で行う
         epochs=epochs,
         callbacks=[early_stopping, reduce_lr]
     )
     
     #評価
-    pointnet_cla.evaluate(x=val_seq)
+    # pointnet_cla.evaluate(x=val_seq)
 
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     save_path = "./logs/weights-{}.h5".format(ts)
