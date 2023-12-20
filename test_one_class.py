@@ -7,7 +7,7 @@ num_point = 2000
 batch_size = 32
 
 # テストデータの読み込み
-test_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
+test_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 10)
 
 # モデルの構築
 pointnet_cla = Pointnet_Cla(num_point, 16)
