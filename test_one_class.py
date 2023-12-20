@@ -40,4 +40,4 @@ pointnet_cla = Pointnet_Cla(num_point, 16)
 pointnet_cla.load_weights("./logs/weights-20231220-133758.h5")
 
 # テスト
-test_one_class(pointnet_cla, test_seq)
+test_one_class(pointnet_cla, test_seq.getitem())#test_seqが良くない
