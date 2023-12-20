@@ -37,7 +37,7 @@ pointnet_cla = Pointnet_Cla(num_point, 16)
 pointnet_cla.compile(optimizer=tf.keras.optimizers.Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # モデルの重みを読み込む（前提）
-pointnet_cla.load_weights("./path_to_your_weights_file.h5")
+pointnet_cla.load_weights("./logs/weights-20231220-133758.h5")
 
 # テスト
 test_one_class(pointnet_cla, test_seq)
