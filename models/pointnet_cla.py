@@ -83,7 +83,7 @@ class Pointnet_Cla(tf.keras.Model):
      def __init__(self, num_points, num_class):
         print("init Pointnet_Cla")
         ### define leyers
-        inputs = keras.Input(shape=(num_points, 3))
+        inputs = keras.Input(shape=(num_points, 3))#3次元ということを表している。
         x = tnet(num_points, 3)(inputs)
         # x=tnet(inputs, 3)
         x = conv_bn(x, 32)
