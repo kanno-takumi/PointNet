@@ -7,7 +7,7 @@ num_point = 2000
 batch_size = 32
 
 # テストデータの読み込み
-test_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 10)
+test_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
 
 # モデルの構築
 pointnet_cla = Pointnet_Cla(num_point, 16)
@@ -21,5 +21,5 @@ pointnet_cla.load_weights("./logs/weights-20231220-205259.h5")
 
 print("aaaaa",test_seq)
 #(x_train,y_train,verbose=0
-test_loss,test_acc = pointnet_cla.evaluate(x=test_seq)
-print("test_loss,test_acc:",test_loss,test_acc)
+# test_loss,test_acc = pointnet_cla.evaluate(x=test_seq)
+# print("test_loss,test_acc:",test_loss,test_acc)
