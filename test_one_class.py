@@ -19,6 +19,6 @@ pointnet_cla.load_weights("./logs/weights-20231220-205259.h5")
 # pointnet_cla.compile(optimizer=tf.keras.optimizers.Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 
-print(test_seq)
+print("aaaaa",test_seq)
 #(x_train,y_train,verbose=0
 test_loss,test_acc = pointnet_cla.evaluate(x=test_seq)
