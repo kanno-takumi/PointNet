@@ -77,14 +77,14 @@ class Data_Seq(tf.keras.utils.Sequence):
         x = points[samples_id]
         return x, y, i 
 
-if __name__ == "__main__":
-    data_seq = Data_Seq("../dataset_pointnet/polygon", 128, 32, 10)
-    x, y = data_seq.getitem()
-    print("x.shape: ", x.shape)
-    print("x[0]: ", x[0])
+# if __name__ == "__main__":
+#     data_seq = Data_Seq("../dataset_pointnet/polygon", 128, 32, 10)
+#     x, y = data_seq.getitem()
+#     print("x.shape: ", x.shape)
+#     print("x[0]: ", x[0])
 
-    print("y.shape: ", y.shape)
-    print("y[:10]: ", y[:10])
+#     print("y.shape: ", y.shape)
+#     print("y[:10]: ", y[:10])
 
 
     
