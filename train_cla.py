@@ -21,7 +21,7 @@ if __name__ == "__main__":
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
     pointnet_cla = Pointnet_Cla(num_point, 16) #引数16はいくつ対象があるか。
-    pointnet_cla.summary()
+    pointnet_cla.summary()#modelを表示する？
 
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, verbose=1, mode='auto')
     reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=1e-6)
