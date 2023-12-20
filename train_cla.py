@@ -11,7 +11,7 @@ if __name__ == "__main__":
 #32個取り出して学習させる。全データを20回学習させる。1エポック(丸々1データセット学習)するにはバッチ*10回する必要がある。
     num_point = 2000 #点群の数　2000に揃えた。
     batch_size = 32
-    epochs = 3
+    epochs = 5
     ite_size = 10
     #train時のデータ
     train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, ite_size)

@@ -13,9 +13,12 @@ test_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_poi
 pointnet_cla = Pointnet_Cla(num_point, 16)
 
 # モデルの重みを読み込む（前提）
-pointnet_cla.load_weights("./logs/weights-20231220-133758.h5")
+pointnet_cla.load_weights("./logs/weights-20231220-205259.h5")
 
 # オプティマイザと損失関数の設定
 # pointnet_cla.compile(optimizer=tf.keras.optimizers.Adam(), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-pointnet_cla.evaluate(x=test_seq)
+
+print(test_seq)
+#(x_train,y_train,verbose=0
+test_loss,test_acc = pointnet_cla.evaluate(x=test_seq)
