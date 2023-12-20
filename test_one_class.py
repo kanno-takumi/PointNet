@@ -9,9 +9,9 @@ def test_one_class(model, test_data):
 
     for test_batch in test_data:
         predictions = model(test_batch)
-        loss = model.evaluate(test_batch, predictions)
+        loss = model.loss(test_batch, predictions)
 
-        test_loss += loss[0]
+        test_loss += loss.numpy()
 
         # 一つのラベルに対する予測と正解の比較
         correct_predictions += tf.reduce_sum(tf.cast(tf.math.argmax(predictions, axis=1) == test_batch, tf.int32)).numpy()
