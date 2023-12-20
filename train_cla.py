@@ -11,10 +11,10 @@ if __name__ == "__main__":
 #32個取り出して学習させる。全データを20回学習させる。1エポック(丸々1データセット学習)するにはバッチ*10回する必要がある。
     num_point = 2000 #点群の数　2000に揃えた。
     batch_size = 32
-    epochs = 3
+    epochs = 10
     ite_size = 10
     #train時のデータ
-    train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train", num_point, batch_size, ite_size)
+    train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, ite_size)
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
     val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
@@ -26,13 +26,17 @@ if __name__ == "__main__":
     early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, verbose=1, mode='auto')
     reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=2, min_lr=1e-6)
 
+    #訓練の実行 tensorflow.keras
     pointnet_cla.fit(
         x=train_seq,
         batch_size=batch_size,
-        validation_data=val_seq,
+        # validation_data=val_seq,　＃訓練と評価を別で行う
         epochs=epochs,
         callbacks=[early_stopping, reduce_lr]
     )
+    
+    #評価
+    pointnet_cla.evaluate(x=val_seq)
 
     ts = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     save_path = "./logs/weights-{}.h5".format(ts)
