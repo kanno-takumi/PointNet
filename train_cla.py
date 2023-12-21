@@ -14,10 +14,11 @@ if __name__ == "__main__":
     epochs = 5
     ite_size = 10
     #train時のデータ
-    train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, ite_size)
+    train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train", num_point, batch_size, ite_size)
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
+    val_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test", num_point, batch_size, 1)
+    # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
     pointnet_cla = Pointnet_Cla(num_point, 16) #引数16はいくつ対象があるか。
