@@ -15,8 +15,8 @@ if __name__ == "__main__":
     num_point = 2000 #点群の数　2000に揃えた。
     batch_size = 32
     epochs = 5
-    train_ite_size = int(train_file_num/batch_size)
-    print(train_ite_size)
+    # train_ite_size = int(train_file_num/batch_size)
+    # print(train_ite_size)
     
     #train時のデータ
     train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud-3", num_point, batch_size, 10)#train_ite_size
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     #test時のデータ
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel-3", num_point, 3, 1)
+    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel-3", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
