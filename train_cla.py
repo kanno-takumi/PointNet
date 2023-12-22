@@ -41,7 +41,9 @@ if __name__ == "__main__":
     #訓練の実行 tensorflow.keras
     pointnet_cla.fit(
         x=train_seq,
+        steps_per_epoch=len(train_seq),
         batch_size=batch_size,
+        validation_steps=len(val_seq),
         validation_data=val_seq, #訓練と評価を別で行う
         epochs=epochs,
         callbacks=[early_stopping, reduce_lr]
