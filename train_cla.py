@@ -16,6 +16,7 @@ if __name__ == "__main__":
     batch_size = 32
     epochs = 5
     train_ite_size = int(train_file_num/batch_size)
+    print(train_ite_size)
     
     #train時のデータ
     train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, train_ite_size)
