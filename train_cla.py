@@ -19,8 +19,8 @@ if __name__ == "__main__":
     print(train_ite_size)
     
     #train時のデータ
-    # train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, train_ite_size)
-    train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train", num_point, batch_size, train_ite_size)#
+    train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, train_ite_size)
+    # train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train", num_point, batch_size, train_ite_size)#
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
     train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test", num_point, batch_size, 1)
