@@ -9,7 +9,7 @@ import tensorflow as tf
 if __name__ == "__main__":
 
 #32個取り出して学習させる。全データを20回学習させる。1エポック(丸々1データセット学習)するにはバッチ*10回する必要がある。
-    train_file_num =32033
+    train_file_num =31384
     test_file_num = 57
     
     num_point = 2000 #点群の数　2000に揃えた。
@@ -19,10 +19,12 @@ if __name__ == "__main__":
     print(train_ite_size)
     
     #train時のデータ
-    train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, train_ite_size)
+    # train_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud", num_point, batch_size, train_ite_size)
+    train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train", num_point, batch_size, train_ite_size)#
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
+    train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test", num_point, batch_size, 1)
+    # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
