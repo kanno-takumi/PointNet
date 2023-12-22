@@ -9,12 +9,12 @@ import tensorflow as tf
 if __name__ == "__main__":
 
 #32個取り出して学習させる。全データを20回学習させる。1エポック(丸々1データセット学習)するにはバッチ*10回する必要がある。
-    train_file_num =31384
-    test_file_num = 57
+    # train_file_num =31384
+    # test_file_num = 57
     
     num_point = 2000 #点群の数　2000に揃えた。
-    batch_size = 32
-    epochs = 5
+    batch_size = 16#32
+    epochs = 30
     ite_size = 10
     # train_ite_size = int(train_file_num/batch_size)
     # print(train_ite_size)
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     #test時のデータ
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel-3", num_point, batch_size, 1)
+    val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel-3", num_point, 3, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
     # val_seq = Data_Seq("./dataset/trimesh_primitives/val", num_point, batch_size, 1)
 
@@ -41,9 +41,7 @@ if __name__ == "__main__":
     #訓練の実行 tensorflow.keras
     pointnet_cla.fit(
         x=train_seq,
-        steps_per_epoch=len(train_seq),
         batch_size=batch_size,
-        validation_steps=len(val_seq),
         validation_data=val_seq, #訓練と評価を別で行う
         epochs=epochs,
         callbacks=[early_stopping, reduce_lr]
