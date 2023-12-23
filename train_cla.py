@@ -13,9 +13,9 @@ if __name__ == "__main__":
     # test_file_num = 57
     
     num_point = 2000 #点群の数　2000に揃えた。
-    batch_size = 3
-    epochs = 1
-    ite_size = 500
+    batch_size = 16
+    epochs = 3
+    ite_size = 10
     # train_ite_size = int(train_file_num/batch_size)
     # print(train_ite_size)
     
