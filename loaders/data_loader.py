@@ -24,12 +24,12 @@ class Data_Seq(tf.keras.utils.Sequence):
         self.iter_size = iter_size
         
         self.data_path, self.data_label = self.load_data()
-        print("data_path:" , self.data_path[:3], " ... ", self.data_path[-3:])
+        print("data_path:" , self.data_path[:3], " ... ", self.data_path[-3:])#最初から3個まで #最後から3個まで
         print("data_label:" , self.data_label[:3], " ... ", self.data_label[-3:])
 
     def load_data(self):
         data_path, data_label = list(), list()
-        _, directories = create_contents_list(self.dataset_dir)
+        _, directories = create_contents_list(self.dataset_dir) #files,directories
         print("directories: ", directories)
         for l, d in enumerate(directories):
             files, _ = create_contents_list(d)
@@ -38,7 +38,7 @@ class Data_Seq(tf.keras.utils.Sequence):
             data_label += [l] * file_num #labelの決定
         return data_path, data_label
 
-    def getitem(self):
+    def getitem(self):#test用メソッド
         """
         for test
         returns x, y data of the batch size.
@@ -62,8 +62,9 @@ class Data_Seq(tf.keras.utils.Sequence):
     def __len__(self):
         return self.batch_size * self.iter_size
 
-    def Preprocess(self, i):
+    def Preprocess(self, i):#ファイルのランダムチョイスとサンプリング
         rind = np.random.randint(len(self.data_path))
+        print("データパスの総数を表示する：",len(self.data_path))
         data_path = self.data_path[rind]
         y = self.data_label[rind]
         #x = trimesh.load(data_path)
@@ -73,18 +74,19 @@ class Data_Seq(tf.keras.utils.Sequence):
             points = np.array(json_data['coords']) #np.arrayに変換した
             
         # x = x.vertices
-        samples_id = np.random.choice(np.arange(points.shape[0]), self.num_points, replace=False)
-        x = points[samples_id]
-        return x, y, i 
+        # samples_id = np.random.choice(np.arange(points.shape[0]), self.num_points, replace=False)#点群の数は揃えている。
+        # x = points[samples_id]
+        # return x, y, i
+        return points, y, i  #点群データ, ラベル, 
 
-# if __name__ == "__main__":
-#     data_seq = Data_Seq("../dataset_pointnet/polygon", 128, 32, 10)
-#     x, y = data_seq.getitem()
-#     print("x.shape: ", x.shape)
-#     print("x[0]: ", x[0])
+if __name__ == "__main__":
+    data_seq = Data_Seq("../dataset_pointnet/polygon", 128, 32, 10)
+    x, y = data_seq.getitem()
+    print("x.shape: ", x.shape)
+    print("x[0]: ", x[0])
 
-#     print("y.shape: ", y.shape)
-#     print("y[:10]: ", y[:10])
+    print("y.shape: ", y.shape)
+    print("y[:10]: ", y[:10])
 
 
     
