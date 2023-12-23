@@ -47,6 +47,12 @@ if __name__ == "__main__":
         callbacks=[early_stopping, reduce_lr]
     )
     
+    test_loss, test_acc = pointnet_cla.evaluate(train_seq,  val_seq, verbose=2) #verbose:ログ出力モード
+    print(test_loss)
+    print(test_acc)
+    predictions = pointnet_cla.predict(val_seq)
+    print(predictions)
+
     #評価
     # pointnet_cla.evaluate(x=val_seq)
 
