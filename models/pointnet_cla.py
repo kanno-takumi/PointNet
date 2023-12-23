@@ -102,7 +102,7 @@ class Pointnet_Cla(tf.keras.Model):
         ### ...define leyers
         super(Pointnet_Cla, self).__init__(inputs=inputs, outputs=outputs)
 
-        adam = tf.optimizers.Adam(learning_rate=0.01, decay=0.0)
+        adam = tf.optimizers.Adam(learning_rate=0.001, decay=0.0)
         loss = tf.losses.sparse_categorical_crossentropy
         metric = keras.metrics.sparse_categorical_accuracy
         self.compile(optimizer=adam, loss=loss , metrics=metric)
