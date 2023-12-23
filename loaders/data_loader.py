@@ -64,7 +64,7 @@ class Data_Seq(tf.keras.utils.Sequence):
 
     def Preprocess(self, i):#ファイルのランダムチョイスとサンプリング
         rind = np.random.randint(len(self.data_path))
-        print("データパスの総数を表示する：",len(self.data_path))
+        # print("データパスの総数を表示する：",len(self.data_path))
         data_path = self.data_path[rind]
         y = self.data_label[rind]
         #x = trimesh.load(data_path)
