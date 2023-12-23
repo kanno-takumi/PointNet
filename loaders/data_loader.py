@@ -18,6 +18,7 @@ def create_contents_list(dataPath):
 
 class Data_Seq(tf.keras.utils.Sequence):
     def __init__(self, dataset_dir, num_points, batch_size, iter_size):
+        self.indices = list(range(len(self.data_path)))# データのインデックスを保持
         self.dataset_dir = dataset_dir
         self.num_points = num_points
         self.batch_size = batch_size
