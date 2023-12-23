@@ -26,7 +26,7 @@ if __name__ == "__main__":
     train_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train3label", num_point, batch_size, ite_size)
     # train_seq = Data_Seq("./dataset/trimesh_primitives/train", num_point, batch_size, ite_size)
     #test時のデータ
-    val_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/train3label", num_point, batch_size, 1)
+    val_seq = Data_Seq("../dataset_pointnet_normalized/pc-split/test3label", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, batch_size, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel-3", num_point, 3, 1)
     # val_seq = Data_Seq("../dataset_pointnet_normalized/pointcloud_3Dmodel", num_point, 1, 1)
@@ -48,10 +48,10 @@ if __name__ == "__main__":
     )
     
     test_loss, test_acc = pointnet_cla.evaluate(train_seq,  val_seq, verbose=2) #verbose:ログ出力モード
-    print(test_loss)
-    print(test_acc)
+    print("test_loss:",test_loss)
+    print("test_acc:",test_acc)
     predictions = pointnet_cla.predict(val_seq)
-    print(predictions)
+    print("predictions:",predictions)
 
     #評価
     # pointnet_cla.evaluate(x=val_seq)
