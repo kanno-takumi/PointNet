@@ -107,11 +107,6 @@ class Pointnet_Cla(tf.keras.Model):
         metric = keras.metrics.sparse_categorical_accuracy
         self.compile(optimizer=adam, loss=loss , metrics=metric)
         
-        test_loss, test_acc = self.evaluate(num_points,  num_class, verbose=2) #verbose:ログ出力モード
-        print(test_loss)
-        print(test_acc)
-
-        
 if __name__ == "__main__":
     pointnet_cla = Pointnet_Cla(128, 5)
     pointnet_cla.summary()
