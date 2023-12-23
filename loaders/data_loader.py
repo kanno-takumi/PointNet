@@ -50,6 +50,12 @@ class Data_Seq(tf.keras.utils.Sequence):
         batch_y = list()
         ### use single thread
         for i in range(self.batch_size):
+            #重複しないよう注意
+            if not self.indices:
+                self.indices = list(range(len(self.data_path)))
+            rind = np.random.choice(self.indices)
+            self.indices.remove(rind)
+            
             x, y, _ = self.Preprocess(i)
             batch_x.append(x)
             batch_y.append(y)
